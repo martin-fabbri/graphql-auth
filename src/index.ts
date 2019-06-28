@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import { ApolloServer } from 'apollo-server-express'
 import { buildSchema } from 'type-graphql'
+// import { AuthChecker } from 'type-graphql'
 import { createConnection } from 'typeorm'
 import { RegisterResolver } from './modules/user/register'
 import express from 'express'
@@ -10,15 +11,23 @@ import cors from 'cors'
 import { redis } from './redis'
 import { LoginResolver } from './modules/user/login'
 import { LoggedInUserResolver } from './modules/user/current-user'
+// import { AppContext } from './types/app-context'
 // import { LoggedInUserResolver } from './modules/user/current-user'
 
 const SESSION_SECRET = 'co0kies#shou1d$be%Kept@secret'
+
+// export const customAuthChecker: AuthChecker<AppContext> = ({context: {req}}) => {
+//     if (!req || !req.session) return false;
+//     console.log('req.session.qid', req.session.userId)
+//     return !!req.session.userId;
+// };
 
 const main = async () => {
     await createConnection()
 
     const schema = await buildSchema({
         resolvers: [RegisterResolver, LoginResolver, LoggedInUserResolver],
+//        authChecker: customAuthChecker,
     })
     const apolloServer = new ApolloServer({
         schema,
