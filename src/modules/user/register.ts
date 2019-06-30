@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs'
 import { User } from '../../entity/user'
 import { RegisterInput } from './register/register-input'
 import { isAuth } from '../../middleware/is-auth'
+import { sendEmail } from '../../utils/send-email'
+import { createConfirmationUrl } from '../../utils/create-confirmation-url'
 
 @Resolver()
 export class RegisterResolver {
@@ -30,6 +32,8 @@ export class RegisterResolver {
             email,
             password: hashedPassword,
         }).save()
+
+        await sendEmail(email, await createConfirmationUrl(user.id))
 
         return user
     }

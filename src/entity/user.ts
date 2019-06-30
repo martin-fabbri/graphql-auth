@@ -31,5 +31,5 @@ export class User extends BaseEntity {
     password: string
 
     @Column('bool', { default: false })
-    confirmed: string
+    confirmed: boolean
 }

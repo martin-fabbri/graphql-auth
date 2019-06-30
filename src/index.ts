@@ -11,6 +11,7 @@ import cors from 'cors'
 import { redis } from './redis'
 import { LoginResolver } from './modules/user/login'
 import { LoggedInUserResolver } from './modules/user/current-user'
+import { ConfirmUser } from './modules/user/confirm-user'
 // import { AppContext } from './types/app-context'
 // import { LoggedInUserResolver } from './modules/user/current-user'
 
@@ -26,7 +27,7 @@ const main = async () => {
     await createConnection()
 
     const schema = await buildSchema({
-        resolvers: [RegisterResolver, LoginResolver, LoggedInUserResolver],
+        resolvers: [RegisterResolver, LoginResolver, LoggedInUserResolver, ConfirmUser],
 //        authChecker: customAuthChecker,
     })
     const apolloServer = new ApolloServer({
