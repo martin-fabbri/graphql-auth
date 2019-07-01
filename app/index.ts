@@ -3,15 +3,11 @@ import { ApolloServer } from 'apollo-server-express'
 import { buildSchema } from 'type-graphql'
 // import { AuthChecker } from 'type-graphql'
 import { createConnection } from 'typeorm'
-import { RegisterResolver } from './modules/user/register'
 import express from 'express'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
 import cors from 'cors'
 import { redis } from './redis'
-import { LoginResolver } from './modules/user/login'
-import { LoggedInUserResolver } from './modules/user/current-user'
-import { ConfirmUser } from './modules/user/confirm-user'
 // import { AppContext } from './types/app-context'
 // import { LoggedInUserResolver } from './modules/user/current-user'
 
@@ -27,7 +23,7 @@ const main = async () => {
     await createConnection()
 
     const schema = await buildSchema({
-        resolvers: [RegisterResolver, LoginResolver, LoggedInUserResolver, ConfirmUser],
+        resolvers: [`${__dirname}/modules/**/*.ts`],
 //        authChecker: customAuthChecker,
     })
     const apolloServer = new ApolloServer({

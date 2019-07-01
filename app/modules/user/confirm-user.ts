@@ -3,8 +3,8 @@ import { User } from '../../entity/user'
 import { redis } from '../../redis'
 
 @Resolver()
-export class ConfirmUser {
-    @Mutation(() => Boolean, { nullable: true })
+export class ConfirmUserResolver {
+    @Mutation(() => Boolean)
     async confirmUser(@Arg('token') token: string): Promise<boolean> {
         const userId = await redis.get(token)
         if (!userId) return false

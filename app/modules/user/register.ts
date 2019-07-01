@@ -5,7 +5,7 @@ import { User } from '../../entity/user'
 import { RegisterInput } from './register/register-input'
 import { isAuth } from '../../middleware/is-auth'
 import { sendEmail } from '../../utils/send-email'
-import { createConfirmationUrl } from '../../utils/create-confirmation-url'
+import { createUrlToken, TOKEN_TYPE } from '../../utils/create-url-token'
 
 @Resolver()
 export class RegisterResolver {
@@ -33,7 +33,7 @@ export class RegisterResolver {
             password: hashedPassword,
         }).save()
 
-        await sendEmail(email, await createConfirmationUrl(user.id))
+        await sendEmail(email, await createUrlToken(user.id, TOKEN_TYPE.ACCOUNT_VALIDATION))
 
         return user
     }

@@ -8,5 +8,5 @@
   "database": "typegraphql",
   "synchronize": true,
   "logging": true,
-  "entities": ["src/entity/*.*"]
+  "entities": ["app/entity/*.*"]
 }

@@ -1,7 +1,7 @@
 import nodeMailer from 'nodemailer'
 
 // async..await is not allowed in global scope, must use a wrapper
-export async function sendEmail(receiverEmail: string, url: string) {
+export async function sendEmail(receiverEmail: string, url: string, htmlText = 'Confirm your account') {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
     const testAccount = await nodeMailer.createTestAccount()
@@ -22,8 +22,8 @@ export async function sendEmail(receiverEmail: string, url: string) {
         from: '"ePuppy support👻" <support@epuppy.com>',
         to: receiverEmail,
         subject: 'Account confirmation', // Subject line
-        text: 'Confirm your account', // plain text body
-        html: `<a href="${url}">Confirm your account</a>`, // html body
+        text: `Follow this link: ${url}`, // plain text body
+        html: `<a href="${url}">${htmlText}</a>`, // html body
     })
 
     console.log('Message sent: %s', info.messageId)

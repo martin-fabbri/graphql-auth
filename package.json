@@ -40,6 +40,6 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "server": "ts-node-dev --respawn src/index.ts"
+    "server": "ts-node-dev --respawn app/index.ts"
   }
 }
