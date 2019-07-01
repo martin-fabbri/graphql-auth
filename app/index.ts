@@ -11,7 +11,9 @@ import { redis } from './redis'
 // import { AppContext } from './types/app-context'
 // import { LoggedInUserResolver } from './modules/user/current-user'
 
+export const SESSION_COOKIE_SESSION = 'qid'
 const SESSION_SECRET = 'co0kies#shou1d$be%Kept@secret'
+
 
 // export const customAuthChecker: AuthChecker<AppContext> = ({context: {req}}) => {
 //     if (!req || !req.session) return false;
@@ -28,7 +30,7 @@ const main = async () => {
     })
     const apolloServer = new ApolloServer({
         schema,
-        context: ({req}: any) => ({req})
+        context: ({req, res}: any) => ({req, res})
     })
 
     const app = express()
@@ -43,7 +45,7 @@ const main = async () => {
             store: new RedisStore({
                 client: redis as any,
             }),
-            name: 'qid',
+            name: SESSION_COOKIE_SESSION,
             secret: SESSION_SECRET,
             resave: false,
             saveUninitialized: false,
