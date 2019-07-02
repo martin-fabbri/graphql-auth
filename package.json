@@ -45,6 +45,6 @@
   "scripts": {
     "server": "ts-node-dev --respawn app/index.ts",
     "db:test-setup": "ts-node ./app/test-utils/setup.ts",
-    "test": "npm run db:test-setup && jest"
+    "test": "npm run db:test-setup && jest --detectOpenHandles"
   }
 }
