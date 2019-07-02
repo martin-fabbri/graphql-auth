@@ -1,6 +1,8 @@
 import { testConn } from '../../test-utils/test-conn'
 import { Connection } from 'typeorm'
 import { graphqlCall } from '../../test-utils/graphql-call'
+import faker from 'faker'
+import { User } from '../../entity/user'
 
 const registerMutation = `
     mutation register($data: RegisterInput!) {
@@ -24,18 +26,32 @@ afterAll(async ()=> {
 
 describe('Register', () => {
     it ('create user', async () => {
-        const user = await graphqlCall({
+        const data = {
+            firstName: faker.name.firstName(),
+            lastName: faker.name.lastName(),
+            email: faker.internet.email(),
+            password: faker.internet.password(),
+        }
+        const response = await graphqlCall({
             source: registerMutation,
-            variableValues: {
-                data: {
-                    firstName: 'Garfield',
-                    lastName: 'Arbuckle',
-                    email: 'garfield@arbuckle.com',
-                    password: 'secret123',
+            variableValues: { data }
+        })
+
+        expect(response).toMatchObject({
+            data: {
+                register: {
+                    name: `${data.firstName} ${data.lastName}`,
+                    email: data.email
                 }
             }
         })
 
-        console.log('User:', user)
+        const dbUser = await User.findOne({where: {email: data.email}})
+        expect(dbUser).toMatchObject({
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            confirmed: false
+        })
     })
 })
