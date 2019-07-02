@@ -4,7 +4,7 @@ import { AppContext } from '../../types/app-context'
 
 @Resolver()
 export class LoggedInUserResolver {
-    @Query(() => User, {nullable: true})
+    @Query(() => User, {nullable: true, complexity: 3})
     async loggedInUser(@Ctx() ctx: AppContext): Promise<User | null | undefined> {
         if (!ctx.req.session || !ctx.req.session.userId) return null
         return User.findOne(ctx.req.session.userId)
