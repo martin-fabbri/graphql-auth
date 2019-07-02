@@ -43,6 +43,8 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "server": "ts-node-dev --respawn app/index.ts"
+    "server": "ts-node-dev --respawn app/index.ts",
+    "db:test-setup": "ts-node ./app/test-utils/setup.ts",
+    "test": "npm run db:test-setup && jest"
   }
 }

@@ -1,0 +1,1 @@
+export const SCHEMA_RESOLVERS = [`${__dirname}/../modules/**/*.resolver.ts`]
