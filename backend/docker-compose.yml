@@ -28,8 +28,11 @@ services:
     networks:
       - webnet
     environment:
-      DB_HOST: db
+      DB_HOST: bd
       REDIS_HOST: redis
+    depends_on:
+      - bd
+      - redis
     command: ["yarn", "server"]
 
 networks:
