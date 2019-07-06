@@ -1,11 +1,11 @@
 {
   "name": "default",
   "type": "postgres",
-  "host": "localhost",
+  "host": "bd",
   "port": 5432,
-  "username": "typedtest",
-  "password": "secret123",
-  "database": "typegraphql",
+  "username": "postgres",
+  "password": "postgres",
+  "database": "auth",
   "synchronize": true,
   "logging": true,
   "entities": ["app/entity/*.*"]
