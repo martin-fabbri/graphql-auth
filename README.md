@@ -1,8 +1,6 @@
 # GraphQL with Apollo Authentication
 
-## How to use
-
-### Setup
+## Setup
 
 Setup docker:
 
@@ -19,7 +17,7 @@ yarn
 yarn dev
 ```
 
-### Start the app
+## Usage
 
 To get this project running locally, you will need setup docker to run the backend server. 
 
