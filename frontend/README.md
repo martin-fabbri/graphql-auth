@@ -2,23 +2,6 @@
 
 ## How to use
 
-### Setup
-
-Setup docker:
-
-```bash
-cd backend
-TODO: docker setup
-```
-
-Install client dependencies:
-
-```bash
-cd frontend
-yarn
-yarn dev
-```
-
 ### Start the app
 
 To get this project running locally, you will need setup docker to run the backend server. 
@@ -33,6 +16,17 @@ Start the frontend server
 yarn dev
 ```
 
+### Setup
+
+TODO: setup docker
+
+Install it and run:
+
+```bash
+yarn
+yarn dev
+```
+
 ## Overview
 
 We use Apollo's GraphQL implementation on server and client.
@@ -41,8 +35,14 @@ We use Apollo's GraphQL implementation on server and client.
 >
 > We integrate Apollo with Next by wrapping our _pages_ inside a [higher-order component (HOC)](https://facebook.github.io/react/docs/higher-order-components.html). Using the HOC pattern we're able to pass down a central store of query result data created by Apollo into our React component hierarchy defined inside each page of our Next application.
 >
-> On initial page load, while on the server and inside `getInitialProps`, we invoke the Apollo method, [`getDataFromTree`](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree). This method returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialize.
+> On initial page load, while on the server and inside `getInitialProps`, we invoke the Apollo method, [`getDataFromTree`](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree). This method returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
 >
+> This example relies on [graph.cool](https://www.graph.cool) for its GraphQL backend.
+>
+> _Note: If you're interested in integrating the client with your existing Redux store check out the [`with-apollo-and-redux`](https://github.com/zeit/next.js/tree/master/examples/with-apollo-and-redux) example._
+
+[graph.cool](https://www.graph.cool) can be setup with many different
+[authentication providers](https://www.graph.cool/docs/reference/integrations/overview-seimeish6e/#authentication-providers), the most basic of which is [email-password authentication](https://www.graph.cool/docs/reference/simple-api/user-authentication-eixu9osueb/#email-and-password). Once email-password authentication is enabled for your graph.cool project, you are provided with 2 useful mutations: `createUser` and `signinUser`.
 
 On loading each route, we perform a `user` query to see if the current visitor is logged in (based on a cookie, more on that in a moment). Depending on the query result, and the route, the user may be [redirected](https://github.com/zeit/next.js/blob/master/examples/with-apollo-auth/lib/redirect.js) to a different page.
 
@@ -58,9 +58,3 @@ The `withData()` HOC must wrap a top-level component from within the `pages` dir
 
 ## Stack
 WIP: Next.js, Apollo Client, Apollo Server, Typescript
-
-## Docker Commands
-
-docker build -t auth-backend .
-
-docker run --name auth auth-backend
