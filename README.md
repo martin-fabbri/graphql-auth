@@ -1,4 +1,4 @@
-# GraphQL with Apollo Authentication
+# Strongly Typed GraphQL with Apollo
 
 ## Setup
 
