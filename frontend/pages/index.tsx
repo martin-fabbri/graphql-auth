@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
 import Layout from '../components/Layout'
 import { NextPage } from 'next'
 import SignInForm from '../components/sign-in-form'
@@ -16,13 +15,5 @@ const IndexPage: NextPage<InitialProps> = () => {
         </Layout>
     )
 }
-
-// IndexPage.getInitialProps = async (
-//     context: Context,
-//     apolloClient: ApolloClient<NormalizedCacheObject>
-// ) => {
-//     console.log(context, apolloClient)
-//     return Promise.resolve({ loggedInUser: false })
-// }
 
 export default IndexPage

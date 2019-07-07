@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Mutation, MutationFn } from 'react-apollo'
 import gql from 'graphql-tag'
-import withApollo from '../lib/with-apollo'
 
 interface FormData {
     email: string
@@ -86,4 +85,4 @@ const SignInForm: React.FC = (client: any) => {
     )
 }
 
-export default withApollo(SignInForm)
+export default SignInForm

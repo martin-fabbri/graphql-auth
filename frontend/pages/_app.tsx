@@ -1,25 +1,41 @@
-import App, { AppProps, Container } from 'next/app'
+import App, { AppProps, Container, AppContext, AppInitialProps } from 'next/app'
 import React from 'react'
-import ApolloProvider from 'react-apollo/ApolloProvider'
 import ApolloClient from 'apollo-client'
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
+import withData from '../lib/with-data'
+import { ParsedUrlQuery } from 'querystring'
 
-interface AuthAppProps extends AppProps {
-    apolloClient: ApolloClient<NormalizedCacheObject>
+export interface AppProps extends AppInitialProps {
+    apollo: ApolloClient<NormalizedCacheObject>
 }
 
-class AuthApp extends App {
+interface PageProps {
+    query?: ParsedUrlQuery
+}
+
+const getInitialProps = async ({
+    Component,
+    ctx,
+}: AppContext): Promise<AppInitialProps> => {
+    let pageProps: PageProps = {}
+    if (Component.getInitialProps) {
+        pageProps = await Component.getInitialProps(ctx)
+    }
+    pageProps.query = ctx.query
+    return { pageProps }
+}
+
+class CustomApp extends App<AppProps<any>> {
+    static getInitialProps = getInitialProps
+
     render() {
-        const { Component, pageProps, apolloClient } = this
-            .props as AuthAppProps
+        const { Component, pageProps, ...otherProps } = this.props
         return (
             <Container>
-                <ApolloProvider client={apolloClient}>
-                    <Component {...pageProps} />
-                </ApolloProvider>
+                <Component {...pageProps} {...otherProps} />
             </Container>
         )
     }
 }
 
-export default AuthApp
+export default withData(CustomApp)
