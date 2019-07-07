@@ -32,8 +32,8 @@ function create(
     { getToken, fetchOptions }: CreateOptions
 ) {
     const httpLink = createHttpLink({
-        uri: 'https://api.graph.cool/simple/v1/cj5geu3slxl7t0127y8sity9r',
-        credentials: 'same-origin',
+        uri: 'https://localhost:4000',
+        credentials: 'include',
         fetchOptions,
     })
 
@@ -42,7 +42,7 @@ function create(
         return {
             headers: {
                 ...headers,
-                authorization: token ? `Bearer ${token}` : '',
+                cookie: token ? `qid=${token}` : '',
             },
         }
     })

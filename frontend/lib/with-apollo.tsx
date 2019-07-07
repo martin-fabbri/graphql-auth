@@ -43,7 +43,7 @@ const withApollo = (App: any) => {
             const apollo = initApollo(
                 {},
                 {
-                    getToken: () => parseCookies(req).token,
+                    getToken: () => parseCookies(req).qid,
                 }
             )
 
