@@ -1,33 +1,49 @@
 import React from 'react'
 import cookie from 'cookie'
 import PropTypes from 'prop-types'
-import { getDataFromTree } from 'react-apollo'
+import { getDataFromTree, Context } from 'react-apollo'
 import Head from 'next/head'
-import {NextComponentType} from 'next'
-
 import initApollo from './init-apollo'
+import { NormalizedCacheObject } from 'apollo-cache-inmemory'
+import { ApolloClient } from 'apollo-client'
 
-function parseCookies (req: any, options = {}) {
-    return cookie.parse(req ? req.headers.cookie || '' : document.cookie, options)
+interface HeadersWithCookie extends Headers {
+    cookie: string
 }
 
-const withApollo = (App: NextComponentType) => {
-    return class WithData extends React.Component {
-        static displayName = `WithData(${App.displayName})`
-        static propTypes = {
-            apolloState: PropTypes.object.isRequired
-        }
+interface WithApolloRequest extends Request {
+    headers: HeadersWithCookie
+}
 
-        static async getInitialProps (ctx) {
+function parseCookies(req?: WithApolloRequest, options = {}) {
+    return cookie.parse(
+        req ? req.headers.cookie || '' : document.cookie,
+        options
+    )
+}
+
+interface WithDataProps {
+    apolloState: NormalizedCacheObject
+}
+
+const withApollo = (App: any) => {
+    return class WithData extends React.Component<WithDataProps> {
+        public static displayName = `WithData(${App.displayName})`
+        public static propTypes = {
+            apolloState: PropTypes.object.isRequired,
+        }
+        private readonly apolloClient: ApolloClient<NormalizedCacheObject>
+
+        public static async getInitialProps(ctx: Context) {
             const {
                 Component,
                 router,
-                ctx: { req, res }
+                ctx: { req, res },
             } = ctx
             const apollo = initApollo(
                 {},
                 {
-                    getToken: () => parseCookies(req).token
+                    getToken: () => parseCookies(req).token,
                 }
             )
 
@@ -52,16 +68,19 @@ const withApollo = (App: NextComponentType) => {
                     await getDataFromTree(
                         <App
                             {...appProps}
-                    Component={Component}
-                    router={router}
-                    apolloClient={apollo}
-                    />
-                )
+                            Component={Component}
+                            router={router}
+                            apolloClient={apollo}
+                        />
+                    )
                 } catch (error) {
                     // Prevent Apollo Client GraphQL errors from crashing SSR.
                     // Handle them in components via the data.error prop:
                     // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-                    console.error('Error while running `getDataFromTree`', error)
+                    console.error(
+                        'Error while running `getDataFromTree`',
+                        error
+                    )
                 }
 
                 // getDataFromTree does not call componentWillUnmount
@@ -74,25 +93,25 @@ const withApollo = (App: NextComponentType) => {
 
             return {
                 ...appProps,
-                apolloState
+                apolloState,
             }
         }
 
-        constructor (props) {
+        public constructor(props: WithDataProps) {
             super(props)
             // `getDataFromTree` renders the component first, the client is passed off as a property.
             // After that rendering is done using Next's normal rendering pipeline
             this.apolloClient = initApollo(props.apolloState, {
                 getToken: () => {
                     return parseCookies().token
-                }
+                },
             })
         }
 
-        render () {
+        public render() {
             return <App {...this.props} apolloClient={this.apolloClient} />
         }
     }
 }
 
-return withApollo
+export default withApollo

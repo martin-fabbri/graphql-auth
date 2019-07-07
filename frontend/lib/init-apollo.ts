@@ -1,4 +1,8 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from 'apollo-boost'
+import {
+    ApolloClient,
+    InMemoryCache,
+    NormalizedCacheObject,
+} from 'apollo-boost'
 import { createHttpLink, FetchOptions } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 import fetch from 'isomorphic-unfetch'
@@ -16,7 +20,6 @@ interface CreateOptions {
     fetchOptions?: FetchOptions
 }
 
-
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null
 
 // Polyfill fetch() on the server (used by apollo-client)
@@ -24,7 +27,10 @@ if (typeof window === 'undefined') {
     global.fetch = fetch
 }
 
-function create(initialState: NormalizedCacheObject, { getToken, fetchOptions }: CreateOptions) {
+function create(
+    initialState: NormalizedCacheObject,
+    { getToken, fetchOptions }: CreateOptions
+) {
     const httpLink = createHttpLink({
         uri: 'https://api.graph.cool/simple/v1/cj5geu3slxl7t0127y8sity9r',
         credentials: 'same-origin',
@@ -51,7 +57,10 @@ function create(initialState: NormalizedCacheObject, { getToken, fetchOptions }:
     })
 }
 
-function initApollo(initialState: NormalizedCacheObject, options: CreateOptions) {
+function initApollo(
+    initialState: NormalizedCacheObject,
+    options: CreateOptions
+) {
     // Make sure to create a new client for every server-side request so that data
     // isn't shared between connections (which would be bad)
     if (typeof window === 'undefined') {
