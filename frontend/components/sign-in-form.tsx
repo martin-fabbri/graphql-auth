@@ -1,4 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { Button } from '@zendeskgarden/react-buttons'
+import { Field, Label, Input } from '@zendeskgarden/react-forms'
 import { Mutation, MutationFn } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -67,18 +69,23 @@ const SignInForm: React.FC = (client: any) => {
             {(signInUser: SignInUserMutationFn, { error }: any) => (
                 <form onSubmit={e => handleOnSubmit(e, signInUser)}>
                     {error && <p>Error: ${error}</p>}
-                    <input
-                        name="email"
-                        placeholder="Email"
-                        onChange={handleFormChange}
-                    />
-                    <input
-                        name="password"
-                        placeholder="Password"
-                        onChange={handleFormChange}
-                    />
-                    <br />
-                    <button>Sign in</button>
+                    <Field>
+                        <Label>Email</Label>
+                        <Input
+                            name="email"
+                            placeholder="Email"
+                            onChange={handleFormChange}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Password</Label>
+                        <Input
+                            name="password"
+                            placeholder="Password"
+                            onChange={handleFormChange}
+                        />
+                    </Field>
+                    <Button>Sign in</Button>
                 </form>
             )}
         </Mutation>

@@ -3,8 +3,10 @@ import Layout from '../components/layout'
 import { NextPage } from 'next'
 import SignInForm from '../components/sign-in-form'
 
-/** Globally include scoped button styling */
+import '@zendeskgarden/css-bedrock/dist/index.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
+import '@zendeskgarden/react-forms/dist/styles.css'
+import '@zendeskgarden/react-chrome/dist/styles.css'
 
 interface InitialProps {
     loggedInUser: boolean

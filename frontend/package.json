@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "@zendeskgarden/css-bedrock": "^7.0.26",
     "@zendeskgarden/react-buttons": "^6.2.0",
+    "@zendeskgarden/react-chrome": "^6.2.0",
+    "@zendeskgarden/react-forms": "^6.2.0",
     "@zendeskgarden/react-theming": "^6.2.0",
     "apollo-boost": "^0.4.3",
     "apollo-link-context": "^1.0.18",

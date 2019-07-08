@@ -5,7 +5,7 @@ import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import withData from '../lib/with-data'
 import { ParsedUrlQuery } from 'querystring'
 import ApolloProvider from 'react-apollo/ApolloProvider'
-import Page from '../components/page'
+import Layout from '../components/layout'
 
 interface PageProps {
     query?: ParsedUrlQuery
@@ -34,11 +34,11 @@ class CustomApp extends App<WithDataProps<any>> {
         const { apollo, Component, pageProps } = this.props
         return (
             <Container>
-                <ApolloProvider client={apollo}>
-                    <Page>
+                <Layout>
+                    <ApolloProvider client={apollo}>
                         <Component {...pageProps} />
-                    </Page>
-                </ApolloProvider>
+                    </ApolloProvider>
+                </Layout>
             </Container>
         )
     }

@@ -1,14 +1,27 @@
 import React from 'react'
 import { ThemeProvider } from '@zendeskgarden/react-theming'
-import { Button } from '@zendeskgarden/react-buttons'
+import { Chrome, Body, Content, Main } from '@zendeskgarden/react-chrome'
+import styled from 'styled-components'
 
 interface Props {
     title?: string
 }
 
-const Layout: React.FunctionComponent<Props> = () => (
+const PaddedMain = styled(Main)`
+    padding: 28px;
+`
+
+const Layout: React.FunctionComponent<Props> = props => (
     <ThemeProvider>
-        <Button>test</Button>
+        <Chrome>
+            <Body>
+                <Content>
+                    <PaddedMain>
+                        <>{props.children}</>
+                    </PaddedMain>
+                </Content>
+            </Body>
+        </Chrome>
     </ThemeProvider>
 )
 

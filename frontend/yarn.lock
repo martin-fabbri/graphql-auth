@@ -1083,7 +1083,37 @@
     mini-css-extract-plugin "0.4.3"
     postcss-loader "3.0.0"
 
-"@zendeskgarden/css-variables@^6.1.1":
+"@zendeskgarden/container-field@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-field/-/container-field-0.1.0.tgz#4acc5779047d758926c6fa04da90f5e54eb476cb"
+  integrity sha512-2bwja+NNCSTM33fN00/VFgBgNBBsbNJp20mf0uCV+weFvndC+4R351f+4XIrNOrJvtNuJbjrDM57LgiiwyhD5A==
+
+"@zendeskgarden/container-keyboardfocus@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-keyboardfocus/-/container-keyboardfocus-0.1.4.tgz#c1ccb6fcc0267dbe037218385210883c3586a273"
+  integrity sha512-Vj1lLCiqCfDHE/GUFmS5sbNCjpqfzJTM2wBBQefm13XLD6ATQ1DG7Oa7hx6ZCFZTpapFgU4F69ZB2kiCzNNqLA==
+  dependencies:
+    "@zendeskgarden/container-selection" "^0.2.3"
+
+"@zendeskgarden/container-selection@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-0.2.3.tgz#0901faeeb9a8966723808169faaccfae0d02450a"
+  integrity sha512-gG/SfglhM5hqcZTHFmOOtqUFnJuOPJ5NT1mPxP7xQAbIe7D0mnVJfa0kOaZtfeHZMjX1EsOySTjF8/5tftjj1Q==
+
+"@zendeskgarden/container-utilities@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-0.1.0.tgz#d57114fd0bf4e55224a0f19cea8fad4964b1d015"
+  integrity sha512-8S7HTXrSZlmrwee7m/1mgxd1xfW/SmhWhYjGVyLvpCpUVXbb+YW0qqRYRKkbYPpzl3t575Gk59FjdyQfzr3jDA==
+
+"@zendeskgarden/css-bedrock@^7.0.26":
+  version "7.0.26"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-bedrock/-/css-bedrock-7.0.26.tgz#4eab7ab8266f64c7e77ac8d5d87e3853cdefe486"
+  integrity sha512-F4/Ji5VmeWLz3vbpijxWRalirn4D20XUGhKdkWntshHl94nKI9EOvAqaekjxKNzMUeBCdhvdpLAbcHXJkDWGKw==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.3.5"
+    normalize.css "^8.0.0"
+
+"@zendeskgarden/css-variables@^6.1.1", "@zendeskgarden/css-variables@^6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.3.5.tgz#48580dc455140bcc138bf1b2225c98cecad1e639"
   integrity sha512-iqtrlGEGXObHwcG3oO50t1QYBQe3HRzkjA7LwC7+wwkP3hG3OfULTo88TWVtP8aDOH64mz7rveRGxRQzpp2djA==
@@ -1098,6 +1128,24 @@
     "@zendeskgarden/react-utilities" "^6.2.0"
     classnames "^2.2.5"
     dom-helpers "^3.3.1"
+
+"@zendeskgarden/react-chrome@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-chrome/-/react-chrome-6.2.0.tgz#899c2c76e4f13e063f4e4881ce0c693eadac2675"
+  integrity sha512-1LnjvrFpKosmXCLmVDWF1jtrvmuU7RomTbRniEGuUqGsrfZlnwYiphsdk2+sSn00xMGYp+nVaPdz1Q6Mp6sDPw==
+  dependencies:
+    "@zendeskgarden/react-selection" "^6.2.0"
+    classnames "^2.2.5"
+
+"@zendeskgarden/react-forms@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-forms/-/react-forms-6.2.0.tgz#38a338fb49cc5d904deb645f3ef3a42896c9522e"
+  integrity sha512-BiTJ3FHkahaqX7ir7XTbCtGZJy5N3Dq4Tpc3pb+TptoudYVmkNDYzl2DRnTUkHb27MNwjvIgfbTisWY8IXEeOw==
+  dependencies:
+    "@zendeskgarden/container-field" "^0.1.0"
+    "@zendeskgarden/container-keyboardfocus" "^0.1.4"
+    "@zendeskgarden/container-utilities" "^0.1.0"
+    classnames "^2.2.5"
 
 "@zendeskgarden/react-selection@^6.2.0":
   version "6.2.0"
@@ -4109,6 +4157,11 @@ normalize-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
+
+normalize.css@^8.0.0:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
+  integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
 npm-bundled@^1.0.1:
   version "1.0.6"
