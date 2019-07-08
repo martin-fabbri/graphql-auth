@@ -10,6 +10,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zendeskgarden/css-bedrock": "^7.0.26",
+    "@zendeskgarden/css-variables": "^6.3.5",
     "@zendeskgarden/react-buttons": "^6.2.0",
     "@zendeskgarden/react-chrome": "^6.2.0",
     "@zendeskgarden/react-forms": "^6.2.0",
@@ -17,6 +18,7 @@
     "apollo-boost": "^0.4.3",
     "apollo-link-context": "^1.0.18",
     "apollo-link-http": "^1.5.15",
+    "babel-plugin-styled-components": "^1.10.6",
     "cookie": "^0.4.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",

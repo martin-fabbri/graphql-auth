@@ -1,7 +1,11 @@
 import * as React from 'react'
-import Layout from '../components/layout'
 import { NextPage } from 'next'
-import SignInForm from '../components/sign-in-form'
+import styled from 'styled-components'
+import {
+    zdColorBlue700,
+    zdFontSizeLg,
+    zdSpacing,
+} from '@zendeskgarden/css-variables'
 
 import '@zendeskgarden/css-bedrock/dist/index.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
@@ -12,12 +16,18 @@ interface InitialProps {
     loggedInUser: boolean
 }
 
+const Title = styled.h1`
+    margin-bottom: ${zdSpacing};
+    color: ${zdColorBlue700};
+    font-size: ${zdFontSizeLg};
+`
+
 const IndexPage: NextPage<InitialProps> = () => {
     return (
-        <Layout title="Home | GraphQL Auth">
-            <h1>Sign In</h1>
-            <SignInForm />
-        </Layout>
+        <>
+            <Title>GraphQL Super Token</Title>
+            <p>Sign in to view your profile</p>
+        </>
     )
 }
 

@@ -1,11 +1,11 @@
-import App, { AppProps, Container, AppContext, AppInitialProps } from 'next/app'
+import App, { AppContext, AppInitialProps, AppProps, Container } from 'next/app'
 import React from 'react'
 import ApolloClient from 'apollo-client'
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
-import withData from '../lib/with-data'
 import { ParsedUrlQuery } from 'querystring'
 import ApolloProvider from 'react-apollo/ApolloProvider'
 import Layout from '../components/layout'
+import withData from '../lib/with-data'
 
 interface PageProps {
     query?: ParsedUrlQuery
