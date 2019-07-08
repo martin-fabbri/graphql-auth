@@ -4,13 +4,15 @@ import ApolloClient from 'apollo-client'
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import withData from '../lib/with-data'
 import { ParsedUrlQuery } from 'querystring'
-
-export interface AppProps extends AppInitialProps {
-    apollo: ApolloClient<NormalizedCacheObject>
-}
+import ApolloProvider from 'react-apollo/ApolloProvider'
+import Page from '../components/page'
 
 interface PageProps {
     query?: ParsedUrlQuery
+}
+
+interface WithDataProps<T> extends AppProps<T> {
+    apollo: ApolloClient<NormalizedCacheObject>
 }
 
 const getInitialProps = async ({
@@ -25,14 +27,18 @@ const getInitialProps = async ({
     return { pageProps }
 }
 
-class CustomApp extends App<AppProps<any>> {
+class CustomApp extends App<WithDataProps<any>> {
     static getInitialProps = getInitialProps
 
     render() {
-        const { Component, pageProps, ...otherProps } = this.props
+        const { apollo, Component, pageProps } = this.props
         return (
             <Container>
-                <Component {...pageProps} {...otherProps} />
+                <ApolloProvider client={apollo}>
+                    <Page>
+                        <Component {...pageProps} />
+                    </Page>
+                </ApolloProvider>
             </Container>
         )
     }

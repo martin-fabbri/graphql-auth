@@ -1,6 +1,6 @@
 # GraphQL with Apollo Authentication
 
-## How to use
+## Usage
 
 ### Start the app
 
@@ -27,6 +27,8 @@ yarn
 yarn dev
 ```
 
+---
+
 ## Overview
 
 We use Apollo's GraphQL implementation on server and client.
@@ -46,9 +48,13 @@ A similar process is followed when signing in, except `signinUser` is the only m
 
 It is important to note the use of Apollo's `resetStore()` method after signing in and signing out to ensure that no user data is kept in the browser's memory.
 
+---
+
 ### Note:
 
 The `withData()` HOC must wrap a top-level component from within the `pages` directory. Wrapping a child component with the HOC will result in a `Warning: Failed prop type: The prop 'serverState' is marked as required in 'WithData(Apollo(Component))', but its value is 'undefined'` error. Down-tree child components will have access to Apollo, and can be wrapped with any other sort of `graphql()`, `compose()`, etc HOC's.
+
+---
 
 ## Stack
 WIP: Next.js, Apollo Client, Apollo Server, Typescript

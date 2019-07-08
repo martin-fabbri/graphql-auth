@@ -8,6 +8,9 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zendeskgarden/react-buttons": "^6.2.0",
+    "@zendeskgarden/react-theming": "^6.2.0",
     "apollo-boost": "^0.4.3",
     "apollo-link-context": "^1.0.18",
     "apollo-link-http": "^1.5.15",
@@ -17,6 +20,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "next": "8.1.1-canary.61",
     "next-with-apollo": "^3.4.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
