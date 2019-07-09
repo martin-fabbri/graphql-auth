@@ -12,7 +12,7 @@ import '@zendeskgarden/react-buttons/dist/styles.css'
 import '@zendeskgarden/react-forms/dist/styles.css'
 import '@zendeskgarden/react-chrome/dist/styles.css'
 
-import { MD, LG, XL } from '@zendeskgarden/react-typography'
+import SignInForm from '../components/sign-in-form'
 
 interface InitialProps {
     loggedInUser: boolean
@@ -27,11 +27,8 @@ const Title = styled.h1`
 const IndexPage: NextPage<InitialProps> = () => {
     return (
         <>
-            <Title>GraphQL Super Token</Title>
-            <LG>Sign in to view your profile</LG>
-            <MD>Sign in to view your profile</MD>
-            <XL>Sign in to view your profile</XL>
-
+            <Title>Sign In</Title>
+            <SignInForm />
         </>
     )
 }
