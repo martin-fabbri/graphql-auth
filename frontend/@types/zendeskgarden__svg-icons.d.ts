@@ -1,0 +1,46 @@
+declare module '@zendeskgarden/css-variables' {
+    export const zdColorGrey800: string
+    export const zdColorGrey700: string
+    export const zdColorGrey600: string
+
+    export const zdColorBlue800: string
+    export const zdColorBlue700: string
+    export const zdColorBlue600: string
+
+    export const zdFontFamilyMonospace: string
+    export const zdFontFamilySystem: string
+    export const zdFontSizeSm: string
+    export const zdFontSizeMd: string
+    export const zdFontSizeLg: string
+    export const zdFontSizeXl: string
+    export const zdFontSizeXxl: string
+    export const zdFontSizeXxxl: string
+    export const zdFontSizeSmMonospace: string
+    export const zdFontSizeMdMonospace: string
+    export const zdFontSizeLgMonospace: string
+    export const zdFontWeightThin: string
+    export const zdFontWeightExtralight: string
+    export const zdFontWeightLight: string
+    export const zdFontWeightRegular: string
+    export const zdFontWeightMedium: string
+    export const zdFontWeightSemibold: string
+    export const zdFontWeightBold: string
+    export const zdFontWeightExtrabold: string
+    export const zdFontWeightBlack: string
+    export const zdFontWeightUltralight: string
+    export const zdFontWeightUltrabold: string
+    export const zdFontWeightHeavy: string
+    export const zdLineHeightSm: string
+    export const zdLineHeightMd: string
+    export const zdLineHeightLg: string
+    export const zdLineHeightXl: string
+    export const zdLineHeightXxl: string
+    export const zdLineHeightXxxl: string
+    export const zdSpacingXxs: string
+    export const zdSpacingXs: string
+    export const zdSpacingSm: string
+    export const zdSpacing: string
+    export const zdSpacingLg: string
+    export const zdSpacingXl: string
+    export const zdSpacingXxl: string
+}
