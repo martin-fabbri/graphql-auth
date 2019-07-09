@@ -17,4 +17,5 @@ declare module '@zendeskgarden/react-chrome' {
     export const Content = React.ComponentClass
     export const Main = React.ComponentClass
     export const HeaderItemWrapper = React.ComponentClass
+    export const Sidebar = React.ComponentClass
 }

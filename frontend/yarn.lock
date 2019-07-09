@@ -1113,6 +1113,11 @@
     "@zendeskgarden/css-variables" "^6.3.5"
     normalize.css "^8.0.0"
 
+"@zendeskgarden/css-variables@6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.3.0.tgz#ec8b0b5bba9a75063269bae136403a2905ac19d3"
+  integrity sha512-vToI3jH5w0KLKJsf0uSbLxPjGsFla7SEa7EKnJdSjDs+Mol5cKv4Yz4QBaYzjX+nuYQZmR3cmUvrhTJeQDkZvw==
+
 "@zendeskgarden/css-variables@^6.1.1", "@zendeskgarden/css-variables@^6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.3.5.tgz#48580dc455140bcc138bf1b2225c98cecad1e639"
@@ -1159,6 +1164,13 @@
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-theming/-/react-theming-6.2.0.tgz#23ea8d69811614fb2d7d002e3f1f7972641f3cb4"
   integrity sha512-eZxcQg17JFZGMnYeaayTgDiq0jutTzh9CiS4H1nRsV9f9dRyYfTLLGmrHIOG2F4ljENQNCE23hdstNA47UhwHA==
+
+"@zendeskgarden/react-typography@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-6.2.0.tgz#56f365a8dbe083ed5a6a58f9c9df79c2afe6a96f"
+  integrity sha512-+z1WBIx5OT4q0wlNSRBfndptoHsZbdQcBLKW+CTjIlNtPJLGBAle6ehe2Jz2SrBOdJ5QsEWCnmlaxz9obqoqSg==
+  dependencies:
+    "@zendeskgarden/css-variables" "6.3.0"
 
 "@zendeskgarden/react-utilities@^6.2.0":
   version "6.2.0"

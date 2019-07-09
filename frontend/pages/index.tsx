@@ -12,6 +12,8 @@ import '@zendeskgarden/react-buttons/dist/styles.css'
 import '@zendeskgarden/react-forms/dist/styles.css'
 import '@zendeskgarden/react-chrome/dist/styles.css'
 
+import { MD, LG, XL } from '@zendeskgarden/react-typography'
+
 interface InitialProps {
     loggedInUser: boolean
 }
@@ -26,7 +28,10 @@ const IndexPage: NextPage<InitialProps> = () => {
     return (
         <>
             <Title>GraphQL Super Token</Title>
-            <p>Sign in to view your profile</p>
+            <LG>Sign in to view your profile</LG>
+            <MD>Sign in to view your profile</MD>
+            <XL>Sign in to view your profile</XL>
+
         </>
     )
 }

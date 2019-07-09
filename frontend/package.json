@@ -15,6 +15,7 @@
     "@zendeskgarden/react-chrome": "^6.2.0",
     "@zendeskgarden/react-forms": "^6.2.0",
     "@zendeskgarden/react-theming": "^6.2.0",
+    "@zendeskgarden/react-typography": "^6.2.0",
     "@zendeskgarden/svg-icons": "^6.3.0",
     "apollo-boost": "^0.4.3",
     "apollo-link-context": "^1.0.18",
