@@ -11,6 +11,7 @@ export class LoginResolver {
         @Arg('password') password: string,
         @Ctx() ctx: AppContext
     ): Promise<User | null> {
+        console.log('LoginResolver ... processing request',email)
         const user = await User.findOne({ where: { email } })
         if (!user) return null
         if (!user.confirmed) return null
@@ -20,6 +21,8 @@ export class LoginResolver {
 
         if (!ctx.req.session) return null
         ctx.req.session.userId = user.id
+
+        console.log('LoginResolver ... returning user:', user)
 
         return user
     }

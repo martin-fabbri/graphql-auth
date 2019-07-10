@@ -1,1 +1,1 @@
-export const BACKEND_ENDPOINT = `http://localhost:4000`
+export const BACKEND_ENDPOINT = `http://localhost:4000/graphql`

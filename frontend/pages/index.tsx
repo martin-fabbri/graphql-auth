@@ -11,7 +11,6 @@ import '@zendeskgarden/css-bedrock/dist/index.css'
 import '@zendeskgarden/react-buttons/dist/styles.css'
 import '@zendeskgarden/react-forms/dist/styles.css'
 import '@zendeskgarden/react-chrome/dist/styles.css'
-
 import SignInForm from '../components/sign-in-form'
 
 interface InitialProps {

@@ -1,4 +1,4 @@
 declare module '@zendeskgarden/react-buttons' {
-    import React from 'react'
-    export const Button = React.ComponentClass
+    import React, { ReactHTML } from 'react'
+    export const Button = ReactHTML.button
 }

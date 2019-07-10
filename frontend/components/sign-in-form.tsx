@@ -1,37 +1,18 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Field, Label, Input } from '@zendeskgarden/react-forms'
-import { Mutation, MutationFn } from 'react-apollo'
-import gql from 'graphql-tag'
+// import { Mutation } from 'react-apollo'
+// import gql from 'graphql-tag'
+// import { SIGN_IN_MUTATION } from '../graphql/user/mutations/login'
+import { LoginComponent, LoginMutationFn } from '../generated/apollo-components'
+// import { LoginComponent, LoginMutation, LoginVariables } from '../generated/apollo-components'
 
 interface FormData {
     email: string
     password: string
 }
 
-interface SignInData {
-    id: string
-    firstName: string
-    lastName: string
-    email: string
-    name: string
-}
-
-type SignInUserMutationFn = MutationFn<FormData, SignInData>
-
-const SIGN_IN_MUTATION = gql`
-    mutation SignIn($email: String!, $password: String!) {
-        login(email: $email, password: $password) {
-            id
-            firtName
-            lastName
-            email
-            name
-        }
-    }
-`
-
-const SignInForm: React.FC = (client: any) => {
+const SignInForm: React.FunctionComponent = () => {
     const [form, setForm] = useState<FormData>({
         email: '',
         password: '',
@@ -46,28 +27,32 @@ const SignInForm: React.FC = (client: any) => {
         })
     }
 
-    const handleOnCompleted = (data: SignInData) => {
-        console.log(data, client)
-    }
+    // const handleOnCompleted = (data: SignInData) => {
+    //     console.log(data, client)
+    // }
+    //
+    // const handleOnError = (error: any) => {
+    //     console.log(error)
+    // }
 
-    const handleOnError = (error: any) => {
-        console.log(error)
-    }
-
-    const handleOnSubmit = (e: FormEvent, signInUser: SignInUserMutationFn) => {
+    const handleOnSubmit = async (
+        e: FormEvent,
+        signInUserMutation: LoginMutationFn
+    ) => {
         e.preventDefault()
-        console.log(signInUser)
+        const user = await signInUserMutation({
+            variables: {
+                email: form.email,
+                password: form.password,
+            },
+        })
+        console.log(user)
     }
 
     return (
-        <Mutation
-            mutation={SIGN_IN_MUTATION}
-            variables={form}
-            onCompleted={handleOnCompleted}
-            onError={handleOnError}
-        >
-            {(signInUser: SignInUserMutationFn, { error }: any) => (
-                <form onSubmit={e => handleOnSubmit(e, signInUser)}>
+        <LoginComponent>
+            {(loginUserMutation, { error }: any) => (
+                <form onSubmit={e => handleOnSubmit(e, loginUserMutation)}>
                     {error && <p>Error: ${error}</p>}
                     <Field>
                         <Label>Email</Label>
@@ -85,10 +70,12 @@ const SignInForm: React.FC = (client: any) => {
                             onChange={handleFormChange}
                         />
                     </Field>
-                    <Button>Sign in</Button>
+                    <Button default type="submit">
+                        Sign in
+                    </Button>
                 </form>
             )}
-        </Mutation>
+        </LoginComponent>
     )
 }
 

@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "generate": "gql-gen --config codegen.yml"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -52,9 +53,13 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-standard": "^4.0.0",
+    "graphql-code-generator": "^0.18.2",
     "install": "^0.13.0",
     "prettier": "^1.18.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "graphql-codegen-typescript-common": "0.18.2",
+    "graphql-codegen-typescript-client": "0.18.2",
+    "graphql-codegen-typescript-react-apollo": "0.18.2"
   },
   "license": "ISC"
 }
