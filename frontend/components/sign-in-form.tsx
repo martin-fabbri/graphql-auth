@@ -1,16 +1,18 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import Link from 'next/link'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Field, Label, Input } from '@zendeskgarden/react-forms'
-// import { Mutation } from 'react-apollo'
-// import gql from 'graphql-tag'
-// import { SIGN_IN_MUTATION } from '../graphql/user/mutations/login'
+import styled from 'styled-components'
 import { LoginComponent, LoginMutationFn } from '../generated/apollo-components'
-// import { LoginComponent, LoginMutation, LoginVariables } from '../generated/apollo-components'
 
 interface FormData {
     email: string
     password: string
 }
+
+const FormContainer = styled.form`
+    width: 400px;
+`
 
 const SignInForm: React.FunctionComponent = () => {
     const [form, setForm] = useState<FormData>({
@@ -26,14 +28,6 @@ const SignInForm: React.FunctionComponent = () => {
             [name]: val,
         })
     }
-
-    // const handleOnCompleted = (data: SignInData) => {
-    //     console.log(data, client)
-    // }
-    //
-    // const handleOnError = (error: any) => {
-    //     console.log(error)
-    // }
 
     const handleOnSubmit = async (
         e: FormEvent,
@@ -52,7 +46,9 @@ const SignInForm: React.FunctionComponent = () => {
     return (
         <LoginComponent>
             {(loginUserMutation, { error }: any) => (
-                <form onSubmit={e => handleOnSubmit(e, loginUserMutation)}>
+                <FormContainer
+                    onSubmit={e => handleOnSubmit(e, loginUserMutation)}
+                >
                     {error && <p>Error: ${error}</p>}
                     <Field>
                         <Label>Email</Label>
@@ -70,10 +66,13 @@ const SignInForm: React.FunctionComponent = () => {
                             onChange={handleFormChange}
                         />
                     </Field>
-                    <Button default type="submit">
+                    <Button stretched primary type="submit">
                         Sign in
                     </Button>
-                </form>
+                    <Link href="/register">
+                        <a>Register</a>
+                    </Link>
+                </FormContainer>
             )}
         </LoginComponent>
     )

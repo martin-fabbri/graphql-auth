@@ -6,8 +6,7 @@ import {
     zdFontSizeLg,
     zdSpacing,
 } from '@zendeskgarden/css-variables'
-
-import SignInForm from '../components/sign-in-form'
+import RegisterForm from '../components/register-form'
 
 interface InitialProps {
     loggedInUser: boolean
@@ -23,7 +22,7 @@ const IndexPage: NextPage<InitialProps> = () => {
     return (
         <>
             <Title>Sign In</Title>
-            <SignInForm />
+            <RegisterForm />
         </>
     )
 }
