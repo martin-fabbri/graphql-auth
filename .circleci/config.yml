@@ -18,7 +18,7 @@ aliases:
       - node_modules
   - &run_build
     name: Building an Image
-    command: ~/repo/.circleci/run.sh
+    command: yarn build
   - &common_steps
     - checkout: *checkout
     - restore_cache: *restore_cache_dependencies
