@@ -1,5 +1,7 @@
 # Strongly Typed GraphQL with Apollo
 
+[![CircleCI](https://circleci.com/gh/martin-fabbri/strongly-typed-graphql/tree/master.svg?style=svg)](https://circleci.com/gh/martin-fabbri/strongly-typed-graphql/tree/master)
+
 ## Setup
 
 Setup docker:
