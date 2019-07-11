@@ -27,6 +27,7 @@ const initialValues: FormData = {
 
 type SetErrorFn = (e: any) => void
 type SetSubmittingFn = (flag: boolean) => void
+type SetStatusFn = (status?: any) => void
 
 const getErrorMsg = (validationError: any) => {
     return Object.values(validationError.constraints).reduce<string>(
@@ -40,7 +41,8 @@ const handleOnSubmit = async (
     formValues: FormData,
     setErrors: SetErrorFn,
     registerMutation: RegisterMutationMutationFn,
-    setSubmitting: SetSubmittingFn
+    setSubmitting: SetSubmittingFn,
+    setStatus: SetStatusFn
 ) => {
     try {
         console.log('values', formValues)
@@ -59,18 +61,25 @@ const handleOnSubmit = async (
             console.log('extensions', extensions)
             const exception = extensions['exception']
             const validationErrors = exception['validationErrors']
-            const errors = validationErrors.reduce(
-                (detectedErrors: {}, validationError: any) => {
-                    const errorMsg = getErrorMsg(validationError)
-                    return {
-                        ...detectedErrors,
-                        [validationError.property]: errorMsg,
-                    }
-                },
-                {}
-            )
+            const errors = validationErrors
+                ? validationErrors.reduce(
+                      (detectedErrors: {}, validationError: any) => {
+                          const errorMsg = getErrorMsg(validationError)
+                          return {
+                              ...detectedErrors,
+                              [validationError.property]: errorMsg,
+                          }
+                      },
+                      {}
+                  )
+                : {}
+            const status = !validationErrors
+                ? { msg: exception.message }
+                : undefined
+
             setSubmitting(false)
             setErrors(errors)
+            setStatus(status)
             console.log('errors', errors)
         }
     }
@@ -84,18 +93,20 @@ const RegisterForm: React.FunctionComponent = () => {
                     initialValues={initialValues}
                     onSubmit={(
                         formValues: FormData,
-                        { setErrors, setSubmitting }
+                        { setErrors, setSubmitting, setStatus }
                     ) =>
                         handleOnSubmit(
                             formValues,
                             setErrors,
                             registerMutation,
-                            setSubmitting
+                            setSubmitting,
+                            setStatus
                         )
                     }
                 >
-                    {({ handleSubmit }) => (
+                    {({ handleSubmit, status }) => (
                         <form onSubmit={handleSubmit}>
+                            {status && status.msg && <div>{status.msg}</div>}
                             <Field>
                                 <Label>First Name</Label>
                                 <FormikField
