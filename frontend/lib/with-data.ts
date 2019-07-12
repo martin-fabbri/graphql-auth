@@ -4,7 +4,9 @@ import ApolloClient, {
     PresetConfig,
 } from 'apollo-boost'
 import withApollo, { InitApolloOptions } from 'next-with-apollo'
-import { BACKEND_ENDPOINT } from '../config'
+
+const BACKEND_ENDPOINT =
+    process.env.BACKEND_ENDPOINT || 'http://localhost:4000/graphql'
 
 const createClient = <T>({
     headers,
