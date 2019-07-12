@@ -9,6 +9,6 @@ RUN yarn install
 COPY . .
 COPY wait-for-it.sh .
 
-EXPOSE 4000
+EXPOSE 4000 2222 
 
 CMD ["yarn", "server"]
