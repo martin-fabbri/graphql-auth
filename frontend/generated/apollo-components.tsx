@@ -23,6 +23,16 @@ export type Upload = any
 // Documents
 // ====================================================
 
+export type ConfirmUserMutationVariables = {
+    token: string
+}
+
+export type ConfirmUserMutationMutation = {
+    __typename?: 'Mutation'
+
+    confirmUser: boolean
+}
+
 export type LoginVariables = {
     email: string
     password: string
@@ -74,6 +84,59 @@ import * as ReactApollo from 'react-apollo'
 // Components
 // ====================================================
 
+export const ConfirmUserMutationDocument = gql`
+    mutation confirmUserMutation($token: String!) {
+        confirmUser(token: $token)
+    }
+`
+export class ConfirmUserMutationComponent extends React.Component<
+    Partial<
+        ReactApollo.MutationProps<
+            ConfirmUserMutationMutation,
+            ConfirmUserMutationVariables
+        >
+    >
+> {
+    render() {
+        return (
+            <ReactApollo.Mutation<
+                ConfirmUserMutationMutation,
+                ConfirmUserMutationVariables
+            >
+                mutation={ConfirmUserMutationDocument}
+                {...(this as any)['props'] as any}
+            />
+        )
+    }
+}
+export type ConfirmUserMutationProps<TChildProps = any> = Partial<
+    ReactApollo.MutateProps<
+        ConfirmUserMutationMutation,
+        ConfirmUserMutationVariables
+    >
+> &
+    TChildProps
+export type ConfirmUserMutationMutationFn = ReactApollo.MutationFn<
+    ConfirmUserMutationMutation,
+    ConfirmUserMutationVariables
+>
+export function ConfirmUserMutationHOC<TProps, TChildProps = any>(
+    operationOptions:
+        | ReactApollo.OperationOption<
+              TProps,
+              ConfirmUserMutationMutation,
+              ConfirmUserMutationVariables,
+              ConfirmUserMutationProps<TChildProps>
+          >
+        | undefined
+) {
+    return ReactApollo.graphql<
+        TProps,
+        ConfirmUserMutationMutation,
+        ConfirmUserMutationVariables,
+        ConfirmUserMutationProps<TChildProps>
+    >(ConfirmUserMutationDocument, operationOptions)
+}
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
         login(email: $email, password: $password) {
