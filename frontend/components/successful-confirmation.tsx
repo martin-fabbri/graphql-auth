@@ -1,7 +1,16 @@
-import React from 'react'
+import { Button } from '@zendeskgarden/react-buttons'
+import * as React from 'react'
 
-const SuccessfulConfirmation: React.FunctionComponent = () => {
-    return <p>Your account was confirmed...</p>
+class SuccessfulConfirmation extends React.Component {
+    render() {
+        console.log(SuccessfulConfirmation, this.props)
+        return (
+            <>
+                <p>Your account was confirmed...</p>
+                <Button muted>Login</Button>
+            </>
+        )
+    }
 }
 
 export default SuccessfulConfirmation
