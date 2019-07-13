@@ -7,6 +7,6 @@ docker-compose*
 .gitignore
 README.md
 LICENSE
-.idea
 .vscode
-pgdata
+.idea
+postgres
