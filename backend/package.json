@@ -6,7 +6,7 @@
   "author": "Martin Fabbri <martin.fabbri.a@gmail.com>",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "apollo-server-express": "^2.6.6",
+    "apollo-server-express": "^2.14.2",
     "bcryptjs": "^2.4.3",
     "connect-redis": "^3.4.1",
     "cors": "^2.8.5",
